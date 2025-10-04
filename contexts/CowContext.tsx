@@ -1,6 +1,6 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { Cow, CowFilters, CowEvent } from '@/types/cow';
 import { storageService } from '@/services/storage';
+import { Cow, CowFilters } from '@/types/cow';
+import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react';
 
 interface CowContextType {
   cows: Cow[];
@@ -58,7 +58,7 @@ export function CowProvider({ children }: { children: ReactNode }) {
   const addCow = async (cow: Cow) => {
     try {
       await storageService.addCow(cow);
-      setCows(prev => [...prev, cow]);
+      setCows(prev => [cow, ...prev]);
     } catch (error) {
       console.error('Error adding cow:', error);
       throw error;

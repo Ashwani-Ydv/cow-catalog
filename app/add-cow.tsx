@@ -8,15 +8,15 @@ import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import {
-    Alert,
-    KeyboardAvoidingView,
-    Platform,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
+  Alert,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from 'react-native';
 
 export default function AddCowScreen() {
@@ -115,12 +115,17 @@ export default function AddCowScreen() {
       }
 
     await addCow(newCow);
-    Alert.alert('Success', 'Cow added successfully!', [
-      {
-        text: 'OK',
-        onPress: () => router.back(),
-      },
-    ]);
+    router.back();
+    // Alert.alert('Success', 'Cow added successfully!', [
+    //   {
+    //     text: 'OK',
+    //     onPress: () => router.back(),
+    //   },
+    // ]);
+    setTimeout(() => {
+      Alert.alert('Success', 'Cow added successfully!');
+    }, 500);
+
     } catch (error) {
       console.error('Error adding cow:', error);
       Alert.alert('Error', 'Failed to add cow. Please try again.');
